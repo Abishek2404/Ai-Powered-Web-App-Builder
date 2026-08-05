@@ -18,6 +18,11 @@ app.use(
         return;
       }
 
+      if (process.env.NODE_ENV !== 'production') {
+        callback(null, true);
+        return;
+      }
+
       callback(new Error(`Origin ${origin} not allowed by CORS`));
     },
     credentials: true,
